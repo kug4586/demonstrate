@@ -125,7 +125,6 @@ def report(aliquot_nums:list, research:list):
         else:
             print(str(research[i]) + '   ')
 
-
 while(True):
     clear()
     print('\n' + '='*30 + '\n서로소의 기묘한 이야기\n' + '='*30)
