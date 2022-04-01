@@ -17,7 +17,7 @@ def find_pita():
             found = False
             for a in range(1, b):
                 if (keyboard.is_pressed('space')):
-                    print('\n\n반복을 종료합니다.\n')
+                    print('\n\n검색을 종료합니다.\n')
                     return pita_nums, cnt
                 if c**2 == a**2 + b**2:
                     pita_nums.append((a,b,c))
@@ -28,6 +28,21 @@ def find_pita():
             if found:
                 break
         c += 1
+
+def remove_likeness(arr):
+    print('\n찾은 수에서 비율이 같은 것을 걸러내는 중....', end='\r')
+
+    result, process = [], []
+    for i in range(len(arr)):
+        if arr[i] not in process:
+            result.append(arr[i])
+            for j in range(len(arr)):
+                if arr[j][0]%arr[i][0] == 0:
+                    process.append(arr[j])
+            process = list(set(process))
+
+    print('처리 완료' + ' '*40)
+    return result
 
 pitagoras = []
 while(1):
@@ -69,7 +84,7 @@ while(1):
                 elif '1' in mathod:
                     while(1):
                         idx = int(input('몇 번째 결과를 불러올까요? (총 %d개): ' % len(pitagoras)))
-                        if idx <= len(pitagoras):
+                        if idx <= len(pitagoras) or idx != 0:
                             print(pitagoras[idx-1])
                             print('\n(계속하려면 [space bar]를 누르시오....)')
                             keyboard.wait('space')
@@ -82,7 +97,9 @@ while(1):
 
 
                 elif '2' in mathod:
-                    print('(계속하려면 [space bar]를 누르시오....)')
+                    extracted_pita = remove_likeness(pitagoras)
+                    print(extracted_pita)
+                    print('\n(계속하려면 [space bar]를 누르시오....)')
                     keyboard.wait('space')
                     break
 
