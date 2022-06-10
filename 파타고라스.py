@@ -7,6 +7,7 @@ def clear():
 1. 직각삼각형에서 C^2 = A^2 + B^2
 2. 이때 반드시 A<B<C (연산 회수를 줄이는 방법)
 '''
+
 def find_pita():
     cnt = 0
     pita_nums = []
